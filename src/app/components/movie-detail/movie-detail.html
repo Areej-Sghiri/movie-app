@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="poster-container">
+        <img
+[src]="`https://image.tmdb.org/t/p/w500${movieService.selectedMovie()?.poster_path}`"
+alt="">
+    </div>
+
+    <div class="details-container">
+
+    <div class="detail-item">
+        <h3>Original title</h3>
+        <p>{{movieService.selectedMovie()?.original_title}}</p>
+    </div>
+    <div class="detail-item">
+        <h3>Original Language</h3>
+        <p>{{movieService.selectedMovie()?.original_language}}</p>
+    </div>
+    <div class="detail-item">
+        <h3>Release Date</h3>
+        <p>{{movieService.selectedMovie()?.release_date}}</p>
+    </div>
+    <div class="detail-item">
+        <h3>Vote Average</h3>
+        <p>{{movieService.selectedMovie()?.vote_average}}</p>
+    </div>
+    <div class="detail-item">
+        <h3>Vote Count</h3>
+        <p>{{movieService.selectedMovie()?.vote_count}}</p>
+    </div>
+    <div class="overview-container">
+        <p class="detail">{{movieService.selectedMovie()?.overview}}</p>
+    </div>
+    <div class="button-container">
+        <button (click)="backToMovieList()">
+        Back to movie list
+        </button>
+        <button 
+        (click)="addToWish(movieService.selectedMovie())">
+        Add to wishlist
+        </button>
+        </div> 
+    </div> 
+</div>
+

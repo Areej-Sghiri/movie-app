@@ -1,0 +1,190 @@
+:host{
+    display: block;
+}
+
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 44px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 44px clamp(16px, 4vw, 56px) 80px;
+    animation: fadeUp 0.7s ease both;
+}
+
+@keyframes fadeUp{
+    from { opacity: 0; transform: translateY(25px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Affiche ---------- */
+.poster-container{
+    position: relative;
+    flex: 0 0 320px;
+    max-width: 100%;
+}
+
+.poster-container::before{
+    content: '';
+    position: absolute;
+    inset: -12px;
+    z-index: 0;
+    border-radius: 28px;
+    background: linear-gradient(135deg, var(--gold), var(--red));
+    filter: blur(32px);
+    opacity: 0.38;
+}
+
+.poster-container img{
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    display: block;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 25px 55px rgba(0, 0, 0, 0.7);
+    transition: transform 0.5s ease;
+}
+
+.poster-container:hover img{
+    transform: rotate(-1.5deg) scale(1.02);
+}
+
+/* ---------- Carte d'informations (glassmorphism) ---------- */
+.details-container{
+    flex: 1 1 380px;
+    padding: 28px 32px 32px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 22px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+
+.detail-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 13px 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.14);
+}
+
+.detail-item h3{
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+}
+
+.detail-item p{
+    margin: 0;
+    font-weight: 500;
+    text-align: right;
+    color: #ffffff;
+}
+
+/* Langue originale en badge */
+.detail-item:nth-child(2) p{
+    padding: 2px 12px;
+    border-radius: 999px;
+    background: rgba(229, 9, 20, 0.2);
+    border: 1px solid rgba(229, 9, 20, 0.6);
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+}
+
+/* Note moyenne avec etoile */
+.detail-item:nth-child(4) p{
+    color: var(--gold);
+    font-weight: 600;
+}
+.detail-item:nth-child(4) p::before{
+    content: '\2605  ';
+}
+
+/* ---------- Synopsis ---------- */
+.overview-container{
+    margin: 26px 0;
+    padding: 4px 0 4px 20px;
+    border-left: 3px solid var(--red);
+}
+
+.overview-container p.detail{
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.85;
+    color: #d8d8e4;
+}
+
+/* ---------- Boutons ---------- */
+.button-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+button{
+    all: unset;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 999px;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Bouton retour */
+.button-container button:first-child{
+    color: #ffffff;
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+}
+.button-container button:first-child::before{
+    content: '\2190';
+    transition: transform 0.25s ease;
+}
+.button-container button:first-child:hover{
+    background: rgba(255, 255, 255, 0.1);
+}
+.button-container button:first-child:hover::before{
+    transform: translateX(-4px);
+}
+
+/* Bouton wishlist */
+.button-container button:last-child{
+    color: #1a1203;
+    background: linear-gradient(135deg, var(--gold), #ff9f1c);
+    box-shadow: 0 8px 24px rgba(245, 197, 24, 0.35);
+}
+.button-container button:last-child::before{
+    content: '\2665';
+    color: var(--red);
+    font-size: 1.1rem;
+}
+.button-container button:last-child:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 14px 32px rgba(245, 197, 24, 0.55);
+}
+.button-container button:last-child:active{
+    transform: translateY(0);
+}
+
+@media (max-width: 760px){
+    .container{ gap: 30px; justify-content: center; }
+    .poster-container{ flex-basis: 260px; }
+    .details-container{ padding: 22px 20px 26px; }
+}

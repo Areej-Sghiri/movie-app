@@ -1,0 +1,98 @@
+:host{
+    display: block;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.container{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px clamp(16px, 4vw, 56px) 20px;
+    background: rgba(10, 10, 18, 0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Bande de pellicule (perforations) en bas du header */
+.container::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 7px;
+    background: repeating-linear-gradient(90deg, var(--gold) 0 14px, transparent 14px 24px);
+    opacity: 0.85;
+}
+
+h1{
+    margin: 0;
+    font-family: var(--font-title);
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 6px;
+    text-shadow: none;
+    background: linear-gradient(90deg, var(--gold) 20%, var(--red) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+button{
+    all: unset;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    height: fit-content;
+    padding: 10px 22px;
+    border: 1.5px solid var(--gold);
+    border-radius: 999px;
+    color: var(--gold);
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+button:hover{
+    background: var(--gold);
+    color: #1a1203;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(245, 197, 24, 0.4);
+}
+
+button:active{
+    transform: translateY(0);
+}
+
+fa-icon{
+    color: var(--red);
+    display: inline-flex;
+}
+
+button:hover fa-icon{
+    color: #b00610;
+    animation: heartbeat 0.8s ease infinite;
+}
+
+@keyframes heartbeat{
+    0%, 100% { transform: scale(1); }
+    30%      { transform: scale(1.3); }
+    60%      { transform: scale(1.1); }
+}
+
+@media (max-width: 560px){
+    h1{ letter-spacing: 3px; }
+    button{ padding: 8px 14px; font-size: 0.75rem; letter-spacing: 1px; }
+}
